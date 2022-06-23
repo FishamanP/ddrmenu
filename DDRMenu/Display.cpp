@@ -152,14 +152,14 @@ Display::~Display(void)
 void Display::Tick(void)
 {
     /* Firat, handle inputs */
-    if (io->ButtonPressed(BUTTON_1P_MENULEFT) || io->ButtonPressed(BUTTON_2P_MENULEFT))
+    if (io->ButtonPressed(BUTTON_1P_MENULEFT) || io->ButtonPressed(BUTTON_2P_MENULEFT) || io->ButtonPressed(BUTTON_1P_MENUUP) || io->ButtonPressed(BUTTON_2P_MENUUP))
     {
         if (selected > 0)
         {
             selected --;
         }
     }
-    if (io->ButtonPressed(BUTTON_1P_MENURIGHT) || io->ButtonPressed(BUTTON_2P_MENURIGHT))
+    if (io->ButtonPressed(BUTTON_1P_MENURIGHT) || io->ButtonPressed(BUTTON_2P_MENURIGHT) || io->ButtonPressed(BUTTON_1P_MENUDOWN) || io->ButtonPressed(BUTTON_2P_MENUDOWN))
     {
         if (selected < (menu->NumberOfEntries() - 1))
         {
