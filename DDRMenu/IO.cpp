@@ -5,6 +5,8 @@
 
 #include "IO.h"
 
+#pragma comment (lib, "Setupapi.lib")
+
 /* P3IO GUID as reversed out of a ddr.dll */
 DEFINE_GUID(P3IO_GUID, 0x1FA4A480, 0xAC60, 0x40C7, 0xA7, 0xAC, 0x52, 0x79, 0x0F, 0x34, 0x57, 0x5A);
 
