@@ -4,7 +4,7 @@
 #include <windows.h>
 
 #include "Menu.h"
-#include "IO.h"
+#include "DDRIO.h"
 
 #define CLASS_NAME L"DDR Cabinet Button Launcher"
 
@@ -15,7 +15,7 @@
 class Display
 {
 public:
-    Display(HINSTANCE hInstance, IO *io, Menu *mInst);
+    Display(HINSTANCE hInstance, DDRIO *io, Menu *mInst);
     ~Display();
 
     void Tick();
@@ -28,7 +28,7 @@ private:
     HWND hwnd;
 
     Menu *menu;
-    IO *io;
+    DDRIO *io;
 
     unsigned int selected;
 };

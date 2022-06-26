@@ -20,8 +20,10 @@ launch=D:\X3\contents\gamestart.bat
 launch=D:\X2\contents\gamestart.bat
 ```
 
-To correctly execute the built code, run the executable with one parameter specifying the location of the INI file. An example invocation is as follows:
+To correctly execute the built code, run the executable with the first parameter specifying the location of the INI file.
+In this fork, a second parameter specifying a DDRIO DLL is also required.
+An example invocation is as follows:
 
 ```
-DDRMenu.exe games.ini
+DDRMenu.exe games.ini ddrio.dll
 ```

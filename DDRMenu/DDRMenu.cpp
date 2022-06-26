@@ -8,7 +8,7 @@
 #include <tchar.h>
 #include "Display.h"
 #include "Menu.h"
-#include "IO.h"
+#include "DDRIO.h"
 
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow)
 {
@@ -29,7 +29,18 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
         return 1;
     }
 
-    if( argc > 2 )
+	if (argc < 3)
+	{
+		MessageBox(
+			NULL,
+			(LPCWSTR)L"Missing ddrio.dll file argument!",
+			(LPCWSTR)L"Invalid Invocation",
+			MB_ICONERROR | MB_OK | MB_DEFBUTTON1
+		);
+		return 1;
+	}
+
+    if( argc > 3 )
     {
         MessageBox(
             NULL,
@@ -41,12 +52,12 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
     }
 
     // Initialize the IO
-    IO *io = new IO();
+    DDRIO *io = new DDRIO(argv[2]);
     if (!io->Ready())
     {
         // Failed to initialize, give up
         delete io;
-
+		fprintf(stderr, "Failed to init ddrio!\n");
         return 1;
     }
 
@@ -105,11 +116,13 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
         {
             io->LightOn(LIGHT_1P_MENU);
             io->LightOn(LIGHT_2P_MENU);
+			io->SetLightsRGB(0, 255, 0);
         }
         else
         {
             io->LightOff(LIGHT_1P_MENU);
             io->LightOff(LIGHT_2P_MENU);
+			io->SetLightsRGB(0, 255, 0);
         }
     }
 

@@ -106,7 +106,7 @@ void GetDesktopResolution(int& horizontal, int& vertical)
    vertical = desktop.bottom;
 }
 
-Display::Display(HINSTANCE hInstance, IO *ioInst, Menu *mInst)
+Display::Display(HINSTANCE hInstance, DDRIO *ioInst, Menu *mInst)
 {
     inst = hInstance;
     globalMenu = mInst;
